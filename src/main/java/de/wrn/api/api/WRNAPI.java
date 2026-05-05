@@ -1,25 +1,16 @@
 package de.wrn.api.api;
 
-import java.util.Map;
-import java.util.UUID;
+import de.wrn.api.dev.DevModeManager;
 
 public class WRNAPI {
 
-    private static LangAPI langAPI;
+    private static DevModeManager devMode;
 
-    public static void init(LangAPI lang) {
-        langAPI = lang;
+    public static void initDevMode(DevModeManager manager) {
+        devMode = manager;
     }
 
-    public static String text(UUID uuid, String key) {
-        return langAPI.get(uuid, key);
-    }
-
-    public static String text(UUID uuid, String key, Map<String, String> placeholders) {
-        return langAPI.replace(uuid, key, placeholders);
-    }
-
-    public static void setLanguage(UUID uuid, String lang) {
-        langAPI.setLanguage(uuid, lang);
+    public static DevModeManager getDevMode() {
+        return devMode;
     }
 }

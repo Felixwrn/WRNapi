@@ -1,4 +1,7 @@
 name: WRN-API
-version: A.0.0.1
+version: 1.0
 main: de.wrn.api.WRNAPIPlugin
 api-version: 1.21
+
+commands:
+  wrn:
