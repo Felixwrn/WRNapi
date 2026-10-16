@@ -37,6 +37,12 @@ public class DevModeManager {
         return true;
     }
 
+    static boolean isSupportedApiVersion(String apiVersion) {
+        return apiVersion != null
+                && (apiVersion.equals("1.21") || apiVersion.startsWith("1.21.")
+                || apiVersion.equals("26.3") || apiVersion.startsWith("26.3."));
+    }
+
     public void checkPlugins() {
         if (!enabled) return;
 
@@ -45,7 +51,7 @@ public class DevModeManager {
             if (p.getName().equalsIgnoreCase("WRN-API")) continue;
 
             String api = p.getDescription().getAPIVersion();
-            boolean compatible = api != null && api.startsWith("1.21");
+            boolean compatible = isSupportedApiVersion(api);
 
             if (!compatible && !isConfirmed(p.getName())) {
                 Bukkit.getLogger().warning("Disabled: " + p.getName());
